@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+  font-family: Tahoma, Arial, sans-serif;
+  background: linear-gradient(135deg, #e0e7ff, #f8fafc);
+  color: #0f172a;
+}
