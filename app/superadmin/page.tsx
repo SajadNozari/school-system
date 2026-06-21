@@ -4,9 +4,18 @@ export default function SuperAdminPage() {
       <h1>👑 داشبورد سوپر ادمین</h1>
 
       <div style={{ display: "grid", gap: "15px", marginTop: "20px" }}>
-        <div style={{ border: "1px solid #ccc", padding: "15px" }}>
+        <a
+          href="/superadmin/students"
+          style={{
+            border: "1px solid #ccc",
+            padding: "15px",
+            display: "block",
+            textDecoration: "none",
+            color: "black",
+          }}
+        >
           👨‍🎓 مدیریت دانش‌آموزان
-        </div>
+        </a>
 
         <div style={{ border: "1px solid #ccc", padding: "15px" }}>
           👨‍🏫 مدیریت معلمان
