@@ -1,38 +1,40 @@
-export default function SuperAdminPage() {
+"use client";
+
+import { useState } from "react";
+
+export default function StudentsPage() {
+  const [students, setStudents] = useState<string[]>([]);
+  const [name, setName] = useState("");
+
+  const addStudent = () => {
+    if (!name.trim()) return;
+
+    setStudents([...students, name]);
+    setName("");
+  };
+
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>👑 داشبورد سوپر ادمین</h1>
+    <div style={{ padding: 20 }}>
+      <h1>👨‍🎓 مدیریت دانش‌آموزان</h1>
 
-      <div style={{ display: "grid", gap: "15px", marginTop: "20px" }}>
-        <a
-          href="/superadmin/students"
-          style={{
-            border: "1px solid #ccc",
-            padding: "15px",
-            display: "block",
-            textDecoration: "none",
-            color: "black",
-          }}
-        >
-          👨‍🎓 مدیریت دانش‌آموزان
-        </a>
+      <input
+        type="text"
+        placeholder="نام دانش‌آموز"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
 
-        <div style={{ border: "1px solid #ccc", padding: "15px" }}>
-          👨‍🏫 مدیریت معلمان
-        </div>
+      <button onClick={addStudent}>
+        ➕ افزودن دانش‌آموز
+      </button>
 
-        <div style={{ border: "1px solid #ccc", padding: "15px" }}>
-          🏫 مدیریت کلاس‌ها
-        </div>
+      <hr />
 
-        <div style={{ border: "1px solid #ccc", padding: "15px" }}>
-          📝 مدیریت آزمون‌ها
-        </div>
-
-        <div style={{ border: "1px solid #ccc", padding: "15px" }}>
-          📊 گزارش‌ها
-        </div>
-      </div>
+      <ul>
+        {students.map((student, index) => (
+          <li key={index}>{student}</li>
+        ))}
+      </ul>
     </div>
   );
 }
