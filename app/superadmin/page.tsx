@@ -1,68 +1,95 @@
 "use client";
 
-import { useState } from "react";
+export default function SuperAdminPage() {
+return (
+<div className="min-h-screen bg-slate-100 flex">
 
-export default function StudentsPage() {
-  const [students, setStudents] = useState<string[]>([]);
-  const [name, setName] = useState("");
+  {/* Sidebar */}
+  <aside className="w-72 bg-slate-900 text-white p-6">
 
-  const addStudent = () => {
-    if (!name.trim()) return;
+    <h1 className="text-2xl font-bold mb-10">
+      👑 سوپر ادمین
+    </h1>
 
-    setStudents([...students, name]);
-    setName("");
-  };
+    <nav className="space-y-3">
 
-  const deleteStudent = (index: number) => {
-    setStudents(students.filter((_, i) => i !== index));
-  };
+      <a
+        href="/superadmin/students"
+        className="block p-3 rounded-xl bg-slate-800 hover:bg-blue-600 transition"
+      >
+        👨‍🎓 مدیریت دانش‌آموزان
+      </a>
 
-  return (
-    <div style={{ padding: "20px" }}>
-      <h1>👨‍🎓 مدیریت دانش‌آموزان</h1>
-
-      <div style={{ marginBottom: "20px" }}>
-        <input
-          type="text"
-          placeholder="نام دانش‌آموز"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          style={{
-            padding: "8px",
-            marginLeft: "10px",
-          }}
-        />
-
-        <button onClick={addStudent}>
-          ➕ افزودن دانش‌آموز
-        </button>
+      <div className="p-3 rounded-xl bg-slate-800">
+        👨‍🏫 مدیریت معلمان
       </div>
 
-      <hr />
+      <div className="p-3 rounded-xl bg-slate-800">
+        🏫 مدیریت کلاس‌ها
+      </div>
 
-      <h3>لیست دانش‌آموزان</h3>
+      <div className="p-3 rounded-xl bg-slate-800">
+        📝 مدیریت آزمون‌ها
+      </div>
 
-      <ul>
-        {students.map((student, index) => (
-          <li
-            key={index}
-            style={{
-              marginBottom: "10px",
-            }}
-          >
-            {student}
+      <div className="p-3 rounded-xl bg-slate-800">
+        💰 مدیریت مالی
+      </div>
 
-            <button
-              onClick={() => deleteStudent(index)}
-              style={{
-                marginRight: "10px",
-              }}
-            >
-              🗑 حذف
-            </button>
-          </li>
-        ))}
-      </ul>
+      <div className="p-3 rounded-xl bg-slate-800">
+        ⚙ تنظیمات
+      </div>
+
+    </nav>
+  </aside>
+
+  {/* Main */}
+  <main className="flex-1 p-8">
+
+    <h2 className="text-3xl font-bold mb-8">
+      داشبورد مدیریت
+    </h2>
+
+    {/* Cards */}
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+
+      <div className="bg-white rounded-2xl shadow-lg p-6">
+        <h3 className="text-gray-500">دانش‌آموزان</h3>
+        <p className="text-3xl font-bold mt-2">0</p>
+      </div>
+
+      <div className="bg-white rounded-2xl shadow-lg p-6">
+        <h3 className="text-gray-500">معلمان</h3>
+        <p className="text-3xl font-bold mt-2">0</p>
+      </div>
+
+      <div className="bg-white rounded-2xl shadow-lg p-6">
+        <h3 className="text-gray-500">کلاس‌ها</h3>
+        <p className="text-3xl font-bold mt-2">0</p>
+      </div>
+
+      <div className="bg-white rounded-2xl shadow-lg p-6">
+        <h3 className="text-gray-500">آزمون‌ها</h3>
+        <p className="text-3xl font-bold mt-2">0</p>
+      </div>
+
     </div>
-  );
+
+    {/* Activity */}
+    <div className="bg-white rounded-2xl shadow-lg mt-8 p-6">
+
+      <h3 className="text-xl font-bold mb-4">
+        آخرین فعالیت‌ها
+      </h3>
+
+      <p className="text-gray-500">
+        هنوز فعالیتی ثبت نشده است.
+      </p>
+
+    </div>
+
+  </main>
+</div>
+
+);
 }
